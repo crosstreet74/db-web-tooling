@@ -1,0 +1,57 @@
+package web_db.sample.controller;
+ 
+import java.util.List;
+import java.util.Map;
+ 
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import web_db.sample.service.SampleService;
+ 
+@Controller
+public class SampleController {
+    Logger log = Logger.getLogger(this.getClass());
+     
+    @Resource(name="sampleService")
+    private SampleService sampleService;
+     
+    @RequestMapping(value="/sample/openUserList.do")
+    public ModelAndView openSampleUserList(Map<String,Object> commandMap) throws Exception{
+        ModelAndView mv = new ModelAndView("/sample/userList");
+         
+        List<Map<String,Object>> list = sampleService.selectUserList(commandMap);
+        mv.addObject("list", list);
+         
+        return mv;
+    }
+    @RequestMapping(value="/sample/openDBEdit.do")
+    public ModelAndView openSampleDBEdit(Map<String,Object> commandMap) throws Exception{
+        ModelAndView mv = new ModelAndView("/sample/dbEdit");
+         
+        List<Map<String,Object>> list = sampleService.selectTableList(commandMap);
+        mv.addObject("list", list);
+         
+        return mv;
+    }
+    @RequestMapping(value="/sample/openTableCrea.do")
+    public ModelAndView openTableCreator(Map<String,Object> commandMap) throws Exception{
+        ModelAndView mv = new ModelAndView("/sample/tableCrea");
+         
+        List<Map<String,Object>> list = sampleService.selectTableList(commandMap);
+        mv.addObject("list", list);
+         
+        return mv;
+    }
+    @RequestMapping(value="/getTable.do", method = RequestMethod.POST)
+	@ResponseBody public List<Map<String, Object>> getTable(@RequestBody String req) throws Exception{
+        return sampleService.selectGetTable(req);
+    }
+}

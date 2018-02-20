@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="sample">
+     
+    <select id="selectUserList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+            	EMP_UID,
+                EMP_ID,
+    			EMP_PW,
+    			EMP_NAME,
+    			EMP_TEAM,
+    			EMP_MAIL,
+    			EMP_PHONE,
+    			EMP_CELLPHONE,
+    			EMP_REG_DTM
+            FROM
+                USER_TB
+            ORDER BY EMP_UID ASC
+        ]]>
+    </select>
+    <select id="selectTableList" resultType="hashmap">
+        <![CDATA[
+            SELECT
+				DISTINCT TABLE_NAME
+            FROM
+                INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_SCHEMA = 'sga'
+        ]]>
+     </select>
+    <select id="selectRCCount" parameterType="String" resultType="hashmap">
+        <![CDATA[
+            SELECT count(*) AS RCCNT
+			FROM INFORMATION_SCHEMA.COLUMNS
+			WHERE TABLE_NAME = #{value}
+			UNION
+			SELECT count(*)
+			FROM ${value}
+        ]]>
+     </select>
+	<select id="selectColName" parameterType="String" resultType="hashmap">
+        <![CDATA[
+            SELECT COLUMN_NAME
+			FROM INFORMATION_SCHEMA.COLUMNS
+			WHERE table_name = #{value}
+        ]]>
+     </select>
+     <select id="selectTableData" parameterType="String" resultType="hashmap">
+        <![CDATA[
+        	SELECT *  
+        	FROM ${value}
+        ]]>
+     </select>
+</mapper>

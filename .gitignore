@@ -1,0 +1,35 @@
+# Created by https://www.gitignore.io/api/svn,eclipse,java-web
+
+### Eclipse ###
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# STS (Spring Tool Suite)
+*.springBeans
+
+### Eclipse Patch ###
+# Eclipse Core		
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+*.classpath
+
+### Java-Web ###
+## ignoring target file
+target/
+
+### SVN ###
+.svn/
+
+# End of https://www.gitignore.io/api/svn,eclipse,java-web
