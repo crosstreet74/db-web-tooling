@@ -3,21 +3,18 @@ package web_db.sample.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
- 
-
-
-
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import web_db.sample.dao.SampleDAO;
  
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService{
-    Logger log = Logger.getLogger(this.getClass());
+    Logger log = LoggerFactory.getLogger(this.getClass());
      
     @Resource(name="sampleDAO")
     private SampleDAO sampleDAO;
