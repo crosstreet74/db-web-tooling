@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>userList</title>
+<title>User List</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 </head>
 <body>
-<h2>게시판 목록</h2>
+<h2>유저 정보</h2>
 <table style="border:1px solid #ccc">
     <colgroup>
-        <col width="5%"/>
+        <col width="10%"/>
         <col width="10%"/>
         <col width="10%"/>
         <col width="10%"/>
@@ -38,7 +38,7 @@
         <c:choose>
             <c:when test="${fn:length(list) > 0}">
                 <c:forEach items="${list }" var="row">
-                    <tr>
+                    <tr align="center">
                         <td>${row.EMP_UID }</td>
                         <td>${row.EMP_ID }</td>
                         <td>${row.EMP_PW }</td>
@@ -59,7 +59,7 @@
         </c:choose>
     </tbody>
 </table><br/>
-<a  href="${pageContext.request.contextPath}/sample/openDBEdit.do">데이터베이스 리스트로 이동</a>
-<a  href="${pageContext.request.contextPath}/sample/openTableCrea.do">테이블 생성으로 이동</a>
+<a  style="padding: 10px;" href="${pageContext.request.contextPath}/sample/openDBEdit.do">데이터베이스 리스트로 이동</a>
+<a  style="padding: 10px;" href="${pageContext.request.contextPath}/sample/openTableCrea.do">테이블 생성으로 이동</a>
 </body>
 </html>
