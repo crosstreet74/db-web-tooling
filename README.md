@@ -20,16 +20,17 @@ Web Application with Simple DB Editing Features
 
 ## Required Steps to Checkout
 
-### Prerequisites
-
-* [Java SE Development Kit 8u152](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html)
+* [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * **Database** is necessary of course
 
-### Eclipse Preferences
+### Checkout by Eclipse Connector
 1. Select import option ***Check out Maven projects from SCM***
 2. If required, install ***m2e-egit*** SCM Connector
-3. Select option ***git*** and set URL as ***https://github.com/crosstreet74/db-web-tooling***
-4. Click Finish 
+3. Confirm import with option ***git*** and URL ***https://github.com/crosstreet74/db-web-tooling***
+
+### Checkout by Cloning
+1. On termainal, clone git repo like ` git clone https://github.com/crosstreet74/db-web-tooling `
+2. Import cloned directory with ***Existing Maven Project*** option
 
 ### Before Deployment
 
