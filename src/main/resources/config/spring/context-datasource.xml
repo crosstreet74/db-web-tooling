@@ -6,7 +6,7 @@
      
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
-        <property name="url" value="jdbc:mariadb://localhost:8210"/>
+        <property name="url" value="jdbc:mariadb://61.100.5.136:8210/sga"/>
         <property name="username" value="user"/>
         <property name="password" value="password"/>
     </bean>

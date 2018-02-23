@@ -33,7 +33,7 @@
         <![CDATA[
             SELECT count(*) AS RCCNT
 			FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE TABLE_NAME = #{value}
+			WHERE TABLE_NAME = ${value}
 			UNION
 			SELECT count(*)
 			FROM ${value}
@@ -43,7 +43,7 @@
         <![CDATA[
             SELECT COLUMN_NAME
 			FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE table_name = #{value}
+			WHERE table_name = ${value}
         ]]>
      </select>
      <select id="selectTableData" parameterType="String" resultType="hashmap">

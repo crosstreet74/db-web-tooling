@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
  
 
+
+
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import web_db.sample.service.SampleService;
+import web_db.sample.vo.SelectVO;
  
 @Controller
 public class SampleController {
@@ -51,8 +55,14 @@ public class SampleController {
          
         return mv;
     }
-    @RequestMapping(value="/getTable.do", method = RequestMethod.POST)
-	@ResponseBody public List<Map<String, Object>> getTable(@RequestBody String req) throws Exception{
-        return sampleService.selectGetTable(req);
-    }
+    /**
+     * @param vo
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/getTable.do", method = RequestMethod.POST)
+	public @ResponseBody List<Map<String, Object>> getTable(@RequestBody SelectVO vo) throws Exception {
+    	String str = vo.getSelTB();
+		return null;
+	}
 }

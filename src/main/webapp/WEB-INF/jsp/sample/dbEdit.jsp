@@ -76,29 +76,45 @@ $(document).ready(function () {
         }
     });
 });
+function getTable(){
+	 	var sendData =  JSON.stringify({selTB:$("#tbSelect").find(":selected").val()});
+	 	alert(sendData + typeof(sendData));
+	 	$.ajax({
+	 		type: "POST",
+	 		url : "<c:url value='/getTable.do' />",
+	 		data: sendData,
+	 		dataType: "json",
+			contentType:"application/json;charset=UTF-8",
+	 		async: true,
+	 		success : function(data, status, xhr) {
+	 			alert("success! " + data);
+ 			},
+ 			error: function(jqXHR, textStatus, errorThrown) {
+ 				alert(jqXHR.responseText);
+	 		}
+	 	});
+	 }
 </script>
 </head>
 
 <body>
 <div style="margin-bottom:10px;">
-	<form id="SelectDB" name="SelectDB" method="GET" style="display:inline;">
-		<label for="tbSelect"><strong>TABLE 리스트 : </strong></label>
-		<select id='tbSelect' name="tbSelect">
-			<c:choose>
-			    <c:when test="${fn:length(list) > 0}">
-			        <c:forEach items="${list }" var="row">
-			        	<option value=${row.TABLE_NAME }>${row.TABLE_NAME }</option>
-			        </c:forEach>
-			    </c:when>
-			    <c:otherwise>
-			        <tr>
-			        	<option value='notable'>no table</option>
-			        </tr>
-			    </c:otherwise>
-			</c:choose>
-		</select>
-	</form>
-	<input type="submit" value="불러오기">
+	<label for="tbSelect"><strong>TABLE 리스트 : </strong></label>
+	<select id='tbSelect' name="tbSelect">
+		<c:choose>
+		    <c:when test="${fn:length(list) > 0}">
+		        <c:forEach items="${list }" var="row">
+		        	<option value=${row.TABLE_NAME }>${row.TABLE_NAME }</option>
+		        </c:forEach>
+		    </c:when>
+		    <c:otherwise>
+		        <tr>
+		        	<option value='notable'>no table</option>
+		        </tr>
+		    </c:otherwise>
+		</c:choose>
+	</select>
+	<input type="submit" value="불러오기" onclick="getTable();">
 </div>
 <div data-ax5grid="first-grid" data-ax5grid-config="{}" style="width:100%; height:316px;"></div><br/>
 <a  style="padding: 10px;" href="${pageContext.request.contextPath}/sample/openUserList.do">유저 관리로 이동</a>
