@@ -6,81 +6,29 @@
 <title>Create DB Table</title>
 <h2>DB 테이블 생성</h2>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/master/dist/ax5calendar.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-select/master/dist/ax5select.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css">
+
+<link rel="stylesheet" href="C:\Users\sga\Downloads\eGovFrameDev-3.5.0-32bit\workspace\db-web-tooling\src\main\webapp\WEB-INF\css\nice-select.css">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/master/dist/ax5calendar.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-formatter/master/dist/ax5formatter.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-select/master/dist/ax5select.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
+<script src="C:\Users\sga\Downloads\eGovFrameDev-3.5.0-32bit\workspace\db-web-tooling\src\main\webapp\WEB-INF\js\jquery.js"></script>
+<script src="C:\Users\sga\Downloads\eGovFrameDev-3.5.0-32bit\workspace\db-web-tooling\src\main\webapp\WEB-INF\js\jquery.nice-select.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-	var API_SERVER = "http://api-demo.ax5.io";
-	var firstGrid = new ax5.ui.grid();
+<script type="text/javascript">	
 
-    firstGrid.setConfig({
-    	target: $('[data-ax5grid="first-grid"]'),
-            
-        showLineNumber: true,
-        showRowSelector: true,
-        multipleSelect: true,
-        lineNumberColumnWidth: 40,
-        rowSelectorColumnWidth: 27,
-        sortable: true,
-         
-        columns: [
-            {key: "uid", label: "아이디", align: "center"},
-       		{key: "pw", label: "비밀번호", align: "center"},
-            {key: "name", label: "이름", align: "center"},
-            {key: "team", label: "팀", align: "center"},
-            {key: "mail", label: "이메일", align: "center"},
-            {key: "tel", label: "전화번호", align: "center"},
-            {key: "phone", label: "휴대전화번호", align: "center"},
-            {key: "date", label: "승인일자", align: "center"}
-        ]
-    });
-    
-    /* 테스트용 데이터 생성 */
-    var list = [];
-    for (var i = 0; i < 8; i++) {
-        list.push({date: "20180209", name: "이현아", uid: "halee", pw: "1111", number: "010-1234-5678"});
-    }
-    
-    firstGrid.setData(list);
-
-
-    /* 버튼 이벤트 핸들러 */
-    $('[data-grid-control]').click(function () {
-        switch (this.getAttribute("data-grid-control")) {
-            case "row-add":
-            	firstGrid.addRow($.extend({}, firstGrid.list[Math.floor(Math.random() * firstGrid.list.length)], {__index: undefined}));
-                //firstGrid.addRow($.extend({}, firstGrid.list[Math.floor(Math.random() * firstGrid.list.length)], true), 1);
-                break;
-            case "row-remove":
-                firstGrid.removeRow(1);
-                break;
-            case "row-update":
-                var updateIndex = Math.floor(Math.random() * firstGrid.list.length);
-                firstGrid.updateRow($.extend({}, firstGrid.list[updateIndex], {name: "방성호", uid: "shbang", pw: "1111"}), updateIndex);
-                break;
-            case "column-add":
-                firstGrid.addColumn({key: "b", label: "추가된 열"}, "last");
-                break;
-            case "column-remove":
-                firstGrid.removeColumn();
-                break;
-            case "column-update":
-                firstGrid.updateColumn({key: "b", label: "업데이트"}, 0);
-                break;
-        }
-    });
-});
+	    var target = document.getElementById('buttonToAdd');
+	    var str = '<select style="font-size:13pt">
+			<option disabled="disabled" selected="selected">Data Type</option>
+			<option value="1" style="font-size:12pt">INT</option>
+			<option value="2" style="font-size:12pt">VARCHAR</option>
+			<option value="3" style="font-size:12pt">TEXT</option>
+			<option value="4" style="font-size:12pt">DATE</option>
+			<option value="5" style="font-size:12pt">TIME</option>
+		</select>';
+	    var child = document.createElement('div');
+	    child.innerHTML = str;
+	    while(child.firstChild){
+	    	target.appendChild(child.firstChild);
+	    }
 </script>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -89,19 +37,42 @@ $(document).ready(function () {
 </head>
 
 <body>
-<div data-ax5grid="first-grid" data-ax5grid-config="{}" style="width:100%; height:316px;"></div><br/>
+<form id="formData">
+	<div>
+		<label for="테이블 명">테이블 명 : </label>
+		<input type="text" id="physical" placeholder=" Physical"/><br />
+		<input type="text" id="logical" style="margin-left:85px" placeholder=" Logical"/>
+	</div>
+	<div id="divAdd">
+		<br />
+		<label for="데이터">데이터 명 : </label>
+		<input type="text" id="data_name" value=""/>
+		<select style="font-size:13pt">
+			<option disabled="disabled" selected="selected">Data Type</option>
+			<option value="1" style="font-size:12pt">INT</option>
+			<option value="2" style="font-size:12pt">VARCHAR</option>
+			<option value="3" style="font-size:12pt">TEXT</option>
+			<option value="4" style="font-size:12pt">DATE</option>
+			<option value="5" style="font-size:12pt">TIME</option>
+		</select>
+		<input type="button" value="추가" id="buttonToAdd" onclick="
+			<br />
+			<input type="text" id="data_name" value=""/>
+				<select style="font-size:13pt">
+					<option disabled="disabled" selected="selected">Data Type</option>
+					<option value="1" style="font-size:12pt">INT</option>
+					<option value="2" style="font-size:12pt">VARCHAR</option>
+					<option value="3" style="font-size:12pt">TEXT</option>
+					<option value="4" style="font-size:12pt">DATE</option>
+					<option value="5" style="font-size:12pt">TIME</option>
+				</select>" />
+	</div>
+	<div>
+		<br />
+		<button type="submit" style="margin-left:345px"> CREATE </button>
+	</div>
+</form>
 
-<div style="padding: 10px;">
-    <button class="btn btn-default" data-grid-control="row-add">행 추가</button>
-    <button class="btn btn-default" data-grid-control="row-remove">행 삭제</button>
-    <button class="btn btn-default" data-grid-control="row-update">행 수정</button>
-</div>
-
-<div style="padding: 10px;">
-    <button class="btn btn-default" data-grid-control="column-add">열 추가</button>
-    <button class="btn btn-default" data-grid-control="column-remove">열 삭제</button>
-    <button class="btn btn-default" data-grid-control="column-update">열 수정</button>
-</div>
 
 <div style="padding-bottom: 20px;"></div>
 <a  style="padding: 10px;" href="${pageContext.request.contextPath}/sample/openUserList.do">유저 관리로 이동</a>
