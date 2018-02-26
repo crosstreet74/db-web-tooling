@@ -2,6 +2,7 @@
 
 [![HitCount](http://hits.dwyl.io/crosstreet74/db-web-tooling.svg)](http://hits.dwyl.io/crosstreet74/db-web-tooling)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling?ref=badge_shield)
 
 ## What is this?
 
@@ -54,6 +55,9 @@ Web Application with Simple DB Editing Features
 
 ## License
 Soon will be ready
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling?ref=badge_large)
 
 ## Contributors
 
