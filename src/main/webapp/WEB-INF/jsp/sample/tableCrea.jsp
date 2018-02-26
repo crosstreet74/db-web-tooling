@@ -15,6 +15,7 @@
 
 <script type="text/javascript">	
 	var oTbl;
+	
 	//Row 추가
 	function insRow() {
 		  oTbl = document.getElementById("addTable");
@@ -57,13 +58,14 @@
 </head>
 
 <body>
-<form name="form" method="post" id="formData">
+<form name="form" method="post" id="formData" action="createdTable.jsp">
 <table>
 	<tr>
 		<td>
 			<label for="테이블 명">테이블 명 : </label>
-			<input type="text" id="physical" placeholder=" Physical"/><br />
-			<input type="text" id="logical" style="margin-left:85px" placeholder=" Logical"/>
+			<input type="text" id="physical" name="phyTab" placeholder=" Physical"/>
+			<br />
+			<input type="text" id="logical" name="logTab" style="margin-left:85px" placeholder=" Logical"/>
 		</td>
 	</tr>
 	<tr>
@@ -73,8 +75,8 @@
 					<td>
 						<br />
 						<label for="데이터">데이터 명 : </label>
-						<input type="text" id="data_name" value="" />
-						<select style="font-size:13pt">
+						<input type="text" name="dataName" value="" />
+						<select name="dataType" style="font-size:13pt">
 							<option disabled="disabled" selected="selected">Data Type</option>
 							<option value="1" style="font-size:12pt">INT</option>
 							<option value="2" style="font-size:12pt">VARCHAR</option>
@@ -92,7 +94,8 @@
 <table>
 	<tr>
 		<td>
-			<input type="button" name="button" value=" CREATE " onClick="frmCheck();">
+			<br />
+			<input type="button" name="button" value=" CREATE " style="margin-left:370px" onClick="frmCheck();">
 		</td>
 	</tr>
 </table>
