@@ -54,8 +54,6 @@ Web Application with Simple DB Editing Features
 > Now ***Run on Server*** the project!
 
 ## License
-Soon will be ready
-
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcrosstreet74%2Fdb-web-tooling?ref=badge_large)
 
